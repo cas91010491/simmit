@@ -29,7 +29,6 @@ BOOST_PYTHON_MODULE(smartplus) {
     bp::def("Idev", Idev);
     bp::def("Ireal2", Ireal2);
     bp::def("Idev2", Idev2);
-    bp::def("Ireal", Ith);
     bp::def("Ith", Ith);
     bp::def("Ir2", Ir2);
     bp::def("Ir05", Ir05);

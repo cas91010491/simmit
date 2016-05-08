@@ -59,7 +59,7 @@ bn::ndarray Ir2() {
 //Returns the strain 2 stress operator
 bn::ndarray Ir05() {
     vec v = smart::Ir05();
-    return mat2array(v);
+    return vec2array(v);
 }
 
 //Provides the elastic stiffness tensor for an isotropic material.

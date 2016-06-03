@@ -2,7 +2,7 @@
 #include <armadillo>
 #include <boost/python.hpp>
 #include <boost/numpy.hpp>
-#include <arma2numpy/numpy_arma.hpp>
+#include <simmit/arma2numpy/numpy_arma.hpp>
 
 #include <smartplus/Libraries/Continuum_Mechanics/damage.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/damage.hpp>

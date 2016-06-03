@@ -10,7 +10,7 @@ setup(name='simmit',
       author_email='yves.chemisky@gmail.com',
       #url=
       packages=['simmit',],
-      package_data={'simmit': ['smartplus.so']},
+      package_data={'simmit': ['smartplus.so','identify.so']},
       
       #include_package_data=True,
       license='GPL'

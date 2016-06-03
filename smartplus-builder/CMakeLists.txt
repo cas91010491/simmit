@@ -51,13 +51,6 @@ else()
 	FIND_LIBRARY(SMARTPLUS_LIBRARY NAMES  smartplus PATHS ${CMAKE_CURRENT_SOURCE_DIR}/lib/)
 endif(SMARTPLUS_FOUND)
 
-find_package(arma2numpy) 
-if(ARMA2NUMPY_FOUND)
-	include_directories(SYSTEM ${ARMA2NUMPY_INCLUDE_DIRS})
-else()	
-	FIND_LIBRARY(ARMA2NUMPY_LIBRARY NAMES  arma2numpy PATHS ${CMAKE_CURRENT_SOURCE_DIR}/lib/)
-endif(ARMA2NUMPY_FOUND)
-
 # Build type
 if(NOT CMAKE_BUILD_TYPE)  # Debug by default
     set(CMAKE_BUILD_TYPE Debug CACHE STRING
@@ -95,13 +88,74 @@ endif()
 include_directories(include)
 
 #Command file to get all the files in the src/ and include/
-file(GLOB_RECURSE source_files src/smartplus_wrappers/* include/simmit/smartplus_wrappers/*)
+file(GLOB_RECURSE source_files_smart src/smartplus_wrappers/* include/simmit/smartplus_wrappers/*)
+
+#Command file to get all the files in the src/ and include/
+file(GLOB_RECURSE source_files_arma2numpy src/arma2numpy/* include/arma2numpy/*)
 
 #Add the files to the lib
-add_library(smartplus MODULE ${source_files})
+add_library(arma2numpy SHARED ${source_files_arma2numpy})
+
+#link against smartplus and Armadillo, and Boost for the numpy
+target_link_libraries(arma2numpy ${ARMADILLO_LIBRARIES} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${SMARTPLUS_LIBRARY})
+
+#Setup CMake to run tests
+enable_testing()
+
+##Testing
+#Test files are in a separate source directory called test
+file(GLOB_RECURSE test_files test/*.cpp)
+
+#Add the files to the lib
+add_library(Tarma2numpy MODULE ${test_files})
+#Move testing binaries into a testBin directory
+#Set executable files and library files
+set(LIBRARY_OUTPUT_PATH {CMAKE_CURRENT_SOURCE_DIR}/test)
+
+set_target_properties(Tarma2numpy PROPERTIES PREFIX "" SUFFIX ".so" LIBRARY_OUTPUT_DIRECTORY  ${CMAKE_CURRENT_SOURCE_DIR}/test/arma2numpy)
+
+#link against smartplus and arma2numpy, and Boost for the wrappers
+target_link_libraries(Tarma2numpy ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${ARMADILLO_LIBRARIES} arma2numpy)
+
+#Finally add it to test execution -
+#Notice the WORKING_DIRECTORY and COMMAND
+add_test(NAME Tarma2numpy WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test/arma2numpy
+		COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test/arma2numpy/run_test.py)
+
+################################################################################
+# SIMMIT modules
+#Add the files to the lib
+add_library(smartplus MODULE ${source_files_smart})
+add_library(identify MODULE ${source_files_smart})
 #Wrapper library set_target properties
 set_target_properties(smartplus PROPERTIES PREFIX "" SUFFIX ".so")
+set_target_properties(identify PROPERTIES PREFIX "" SUFFIX ".so")
 #link against smartplus (C++ lib) and arma2numpy, and Boost for the wrappers
-target_link_libraries(smartplus ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${SMARTPLUS_LIBRARY} ${ARMA2NUMPY_LIBRARY})
+target_link_libraries(smartplus ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${SMARTPLUS_LIBRARY} arma2numpy)
+target_link_libraries(identify ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${SMARTPLUS_LIBRARY} arma2numpy)
 
+
+################################################################################
+# INSTALL CONFIGURATION OF ARMA2NUMPY
+
+if(NOT INSTALL_INCLUDE_DIR)
+  set(INSTALL_INCLUDE_DIR "include")
+endif()
+
+if(NOT INSTALL_LIB_DIR)
+  set(INSTALL_LIB_DIR "lib")
+endif()
+
+# executables destination
+if(NOT INSTALL_BIN_DIR)
+  set(INSTALL_BIN_DIR "bin")
+endif()
+
+message(STATUS "CMAKE_INSTALL_PREFIX = ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "INSTALL_LIB_DIR      = ${INSTALL_LIB_DIR}"     )
+message(STATUS "INSTALL_INCLUDE_DIR  = ${INSTALL_INCLUDE_DIR}" )
+message(STATUS "INSTALL_BIN_DIR      = ${INSTALL_BIN_DIR}"    )
+
+install(DIRECTORY include/ DESTINATION ${INSTALL_INCLUDE_DIR})
+install(TARGETS arma2numpy DESTINATION ${INSTALL_LIB_DIR})
 

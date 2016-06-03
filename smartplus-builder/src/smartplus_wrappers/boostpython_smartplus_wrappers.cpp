@@ -2,7 +2,7 @@
 #include <armadillo>
 #include <boost/python.hpp>
 #include <boost/numpy.hpp>
-#include <arma2numpy/numpy_arma.hpp>
+#include <simmit/arma2numpy/numpy_arma.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/constitutive.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/contimech.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/criteria.hpp>

@@ -83,7 +83,4 @@ BOOST_PYTHON_MODULE(smartplus) {
     // Register the from-python converters for read and solver
     bp::def("read_matprops", read_matprops);
     bp::def("solver", solver);
-    
-
-    
 }

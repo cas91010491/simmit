@@ -93,7 +93,7 @@ def poly_enclose(points, color, inc=1.2, rad=0.3, lw=2):
     pts.insert(len(pts), pts[0])
 
 
-verts = inc*(np.array(pts)- cent) + cent
+    verts = inc*(np.array(pts)- cent) + cent
     verts2 = np.zeros((3*verts.shape[0]-2,2))
     verts2[0::3] = verts
     verts2[1::3,:] = (1-rad)*verts[0:-1,:] + rad*verts[1:,:]

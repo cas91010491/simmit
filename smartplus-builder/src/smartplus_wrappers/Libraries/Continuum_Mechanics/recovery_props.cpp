@@ -7,6 +7,7 @@
 #include <smartplus/Libraries/Continuum_Mechanics/recovery_props.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/recovery_props.hpp>
 
+namespace bp = boost::python;
 namespace bn = boost::numpy;
 using namespace std;
 using namespace arma;
@@ -15,10 +16,20 @@ using namespace arma2numpy;
 namespace smartpy {
 
 //Check the material symetries and the type of elastic response for a given stiffness tensor
-void check_symetries(const bn::ndarray &nL, std::string &umat_type, int &axis, int &maj_sym) {
+bp::dict check_symetries(const bn::ndarray &nL) {
     
     mat L = array2mat(nL);
-    smart::check_symetries(L, umat_type, axis, maj_sym);
+    int axis = 0;
+    string umat_type;
+    vec props;
+    int maj_sym = 0;
+    smart::check_symetries(L, umat_type, axis, props, maj_sym);
+    bp::dict d;
+    d["umat_type"]  = umat_type;
+    d["axis"]  = axis;
+    d["maj_sym"]  = maj_sym;
+    d["props"]  = vec2array(props);
+    return d;
 }
 
 //return a list of elastic properties for the isotropic case (E,nu) from a stiffness tensor
@@ -31,6 +42,7 @@ bn::ndarray L_iso_props(const bn::ndarray &nLt) {
     
 //return a list of elastic properties for the isotropic case (E,nu) from a compliance tensor
 bn::ndarray M_iso_props(const bn::ndarray &nMt) {
+    
     mat Mt = array2mat(nMt);
     vec props = smart::M_iso_props(Mt);
     return vec2array(props);

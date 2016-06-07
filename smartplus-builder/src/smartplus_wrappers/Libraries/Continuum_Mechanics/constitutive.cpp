@@ -66,7 +66,7 @@ bn::ndarray Ir05() {
 //The two first arguments are a couple of Lamé coefficients. The third argument specify which couple has been provided and the order of coefficients.
 //Exhaustive list of possible third argument :
 // ‘Enu’,’nuE,’Kmu’,’muK’, ‘KG’, ‘GK’, ‘lambdamu’, ‘mulambda’, ‘lambdaG’, ‘Glambda’.
-bn::ndarray L_iso(const double &C1, const double &C2, string conv){
+bn::ndarray L_iso(const double &C1, const double &C2, const string &conv){
     mat m = smart::L_iso(C1,C2,conv);
     return mat2array(m);
 }
@@ -75,35 +75,39 @@ bn::ndarray L_iso(const double &C1, const double &C2, string conv){
 //The two first arguments are a couple of Lamé coefficients. The third argument specify which couple has been provided and the order of coefficients.
 //Exhaustive list of possible third argument :
 //‘Enu’,’nuE,’Kmu’,’muK’, ‘KG’, ‘GK’, ‘lambdamu’, ‘mulambda’, ‘lambdaG’, ‘Glambda’.
-bn::ndarray M_iso(const double &C1, const double &C2, string conv){
+bn::ndarray M_iso(const double &C1, const double &C2, const string &conv){
     mat m = smart::M_iso(C1,C2,conv);
     return mat2array(m);
 }
 
 //Returns the elastic stiffness tensor for a cubic material.
-//Arguments are the stiffness coefficients C11, C12 and C44.
-bn::ndarray L_cubic(const double &C11, const double &C12, const double &C44){
-    mat m = smart::L_cubic(C11,C12,C44);
+//Arguments are the stiffness coefficients C11, C12 and C44 ('Cii'), or E, nu and G ('EnuG')
+bn::ndarray L_cubic(const double &C11, const double &C12, const double &C44, const string &conv){
+    mat m = smart::L_cubic(C11,C12,C44,conv);
     return mat2array(m);
 }
 
 //Returns the elastic compliance tensor for an isotropic material.
-//Arguments are the stiffness coefficients C11, C12 and C44.
-bn::ndarray M_cubic(const double &C11, const double &C12, const double &C44){
-    mat m = smart::M_cubic(C11,C12,C44);
+//Arguments are the stiffness coefficients C11, C12 and C44 ('Cii'), or E, nu and G ('EnuG')
+bn::ndarray M_cubic(const double &C11, const double &C12, const double &C44, const string &conv){
+    mat m = smart::M_cubic(C11,C12,C44,conv);
     return mat2array(m);
 }
 
 //Returns the elastic stiffness tensor for an orthotropic material.
 //Arguments are the stiffness coefficients Cii or E and nu's
-bn::ndarray L_ortho(const double &C11, const double &C12, const double &C13, const double &C22, const double &C23, const double &C33, const double &C44, const double &C55, const double &C66, string conv){
+//C11,C12,C13,C22,C23,C13,C44,C55,C66 ('Cii')
+//E1,E2,E3,nu12,nu13,nu23,G12,G13,G23 ('EnuG')
+bn::ndarray L_ortho(const double &C11, const double &C12, const double &C13, const double &C22, const double &C23, const double &C33, const double &C44, const double &C55, const double &C66, const string &conv){
     mat m = smart::L_ortho(C11,C12,C13,C22,C23,C33,C44,C55,C66,conv);
     return mat2array(m);
 }
 
 //Returns the elastic compliance tensor for an orthotropic material.
 //Arguments are the stiffness coefficients Cii or E and nu's
-bn::ndarray M_ortho(const double &C11, const double &C12, const double &C13, const double &C22, const double &C23, const double &C33, const double &C44, const double &C55, const double &C66, string conv){
+//C11,C12,C13,C22,C23,C13,C44,C55,C66 ('Cii')
+//E1,E2,E3,nu12,nu13,nu23,G12,G13,G23 ('EnuG')
+bn::ndarray M_ortho(const double &C11, const double &C12, const double &C13, const double &C22, const double &C23, const double &C33, const double &C44, const double &C55, const double &C66, const string &conv){
     mat m = smart::M_ortho(C11,C12,C13,C22,C23,C33,C44,C55,C66,conv);
     return mat2array(m);
 }

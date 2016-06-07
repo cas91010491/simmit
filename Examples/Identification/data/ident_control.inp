@@ -1,0 +1,25 @@
+Number_of_parameters
+4
+Number_of_consts
+2
+Number_of_files
+3
+Number_of_generations
+20
+Aleatory_Space_Population_0=mesh_1=meshlimit_2=random_3=defined
+2
+Space_Population
+20
+Golden_boys
+1
+Max_population_per_subgeneration
+10
+Mutation_probability_pourcentage
+5
+perturbation
+0.01
+
+Lagrange_parameters
+0.001	10
+Lambda_LM
+0.01

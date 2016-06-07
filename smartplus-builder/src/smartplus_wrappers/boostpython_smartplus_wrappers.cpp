@@ -6,6 +6,7 @@
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/constitutive.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/contimech.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/criteria.hpp>
+#include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/recovery_props.hpp>
 
 #include <simmit/smartplus_wrappers/Libraries/Homogenization/eshelby.hpp>
 
@@ -71,6 +72,20 @@ BOOST_PYTHON_MODULE(smartplus) {
     bp::def("dTresca_stress", dTresca_stress);
     bp::def("Eq_stress", Eq_stress);
     bp::def("dEq_stress", dEq_stress);
+    
+    // Register the from-python converters for recovery_props
+    bp::def("check_symetries", check_symetries);
+    bp::def("L_iso_props", L_iso_props);
+    bp::def("M_iso_props", M_iso_props);
+    bp::def("L_isotrans_props", L_isotrans_props);
+    bp::def("M_isotrans_props", M_isotrans_props);
+    bp::def("L_cubic_props", L_cubic_props);
+    bp::def("M_cubic_props", M_cubic_props);
+    bp::def("L_ortho_props", L_ortho_props);
+    bp::def("M_ortho_props", M_ortho_props);
+    bp::def("M_aniso_props", M_aniso_props);
+
+    
 
     // Register the from-python converters for eshelby
     bp::def("Eshelby_sphere", Eshelby_sphere);

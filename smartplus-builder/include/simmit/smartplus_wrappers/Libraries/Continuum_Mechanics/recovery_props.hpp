@@ -5,7 +5,7 @@
 namespace smartpy{
 
 //Check the material symetries and the type of elastic response for a given stiffness tensor
-void check_symetries(const boost::numpy::ndarray &, std::string &, int &, int &);
+boost::python::dict check_symetries(const boost::numpy::ndarray &);
 
 //return a list of elastic properties for the isotropic case (E,nu) from a stiffness tensor
 boost::numpy::ndarray L_iso_props(const boost::numpy::ndarray &);

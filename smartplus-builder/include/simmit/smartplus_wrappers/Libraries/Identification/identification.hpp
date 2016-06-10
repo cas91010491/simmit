@@ -5,7 +5,7 @@
 namespace smartpy{
 
 //This function computes the response of materials for an homogeneous mixed thermomechanical loading path
-void identification_solver(const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const boost::python::str &, const boost::python::str &, const boost::python::str &);
+void identification_solver(const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const int &, const boost::python::str &, const boost::python::str &, const boost::python::str &, const boost::python::str &);
 
 boost::python::list read_constants_py(const int &, const int &);
     

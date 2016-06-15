@@ -1,0 +1,51 @@
+List of parameters :
+(with an example of value)
+
+#Mechancial
+	
+EL		31034
+ET		4369
+nuTL		0.065
+nuTT		0.36
+GLT		1916.5
+alphaL		0.
+alphaT		0.
+
+Y_12_0		19821
+Y_12_c		0.1789
+
+Y_22_0		0.2622	 should be from 0.1 - 1.
+Y_22_c		10.8081	 from 1. to 100.
+Y_22_u		10.364	 better to set a high value then last parameter to calibrate by descreasing (failure) 
+b		1.	"close to 1. (from 0.5 - 4)
+
+A		1.	"close to 1. (from 0.5 - 4)
+sigma_ts_0	10.0 	"stress yield for plasticity : typically from 10 to 150"
+alpha_ts	0.6709  -- max 1 (linear hardening, min 0.1, very smooth non linear hardening)
+beta_ts		1866.09 -- "stiffness of the hardening"
+
+
+###Explanations###
+###Elasticity coefficients ###
+EL		Longitudinal Young's modulus
+ET		Transverse Young's modulus
+nuTL		nu transverse/longitudinal direction
+nuTT		nu transverse/transverse direction
+GLT		in-plane shear modulus
+alphaL		CTE (Coefficient of thermal expansion) in the longitudinal direction
+alphaT		CTE (Coefficient of thermal expansion) in the transverse direction
+
+###Damage in the shear direction coefficients defined in the Ladeveze-Le Dantec model ###
+Y_12_0		Critical driving force for damage in the shear direction
+Y_12_c		damage - driving force relation
+
+Y_22_0		Critical driving force for damage in the transverse direction
+Y_22_c		damage - driving force relation
+Y_22_u		Ultimate damage driving force threshold
+b		shear - transverse damage coupling parameter
+
+A		shear - transverse plasticty coupling parameter ("equivalent to a^2 in Le Dantec")
+sigma_ts_0	Yield limit for the onset of plasticity (Equivalent to Re) in the shear/transverse (to fiber) directions
+alpha_ts	Exponent
+beta_ts		hardening coefficient
+

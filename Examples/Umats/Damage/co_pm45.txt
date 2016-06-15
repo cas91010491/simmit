@@ -1,0 +1,26 @@
+#Initial_temperature
+290
+#Number_of_blocks
+1
+
+#Block
+1
+#Loading_type
+1
+#Repeat
+1
+#Steps
+1
+
+#Mode
+3
+#File
+composite_pm45_inc.txt
+#Dn_init 1.
+#Dn_mini 1.
+#Consigne
+S
+0  0
+0  0  0
+#T_is_set
+0

@@ -26,39 +26,3 @@ S 0 S 0 S 0
 #Consigne_T
 T 290
 
-
-#Mode
-3
-#File
-path_inc.txt
-#Dn_init 1.
-#Dn_mini 1.
-#Consigne
-S
-0  0
-0  0  0
-#T_is_set
-Q
-
-
-
-
-
-
-
-#Mode
-1
-#Dn_init 1.
-#Dn_mini 1.
-#Dn_inc 0.1
-#time
-1
-#Consigne
-S 600
-S 0 S 0
-S 0 S 0 S 0
-#Consigne_T
-T 290
-
-
-

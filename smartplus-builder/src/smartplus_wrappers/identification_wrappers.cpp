@@ -8,6 +8,7 @@
 #include <simmit/smartplus_wrappers/Libraries/Identification/identification.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Identification/constants.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Identification/parameters.hpp>
+#include <simmit/smartplus_wrappers/Libraries/Identification/optimize.hpp>
 
 namespace bp = boost::python;
 namespace bn = boost::numpy;
@@ -60,5 +61,9 @@ BOOST_PYTHON_MODULE(identify) {
     bp::def("read_parameters", read_parameters_py);
     bp::def("copy_parameters", copy_parameters_py);
     bp::def("apply_parameters", apply_parameters_py);
+    
+    // Register the function specific for the solver
+    bp::def("cost_solver", cost_solver);
+    
     
 }

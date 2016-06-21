@@ -100,15 +100,14 @@ double calc_cost(const int &nfiles, const string &data_num_name) {
         data_exp[i].import(data_exp_folder);
         data_weight[i].import(data_exp_folder);
         sizev += data_exp[i].ndata * data_exp[i].ninfo;
-
-        data_num[i].name = data_num_name_root + to_string(i+1) + "_global-0" + data_num_name_ext;
+        
+        data_num[i].name = data_num_name_root + "_" + to_string(i+1) + data_num_name_ext;
         data_num[i].import(data_num_folder);
-        assert(data_exp[i].ndata==data_num[i].ndata);
     }
     
     ///Computation of the cost function
     vec vexp = smart::calcV(data_exp, data_exp, nfiles, sizev);
-    vec vnum = smart::calcV(data_exp, data_num, nfiles, sizev);
+    vec vnum = smart::calcV(data_num, data_exp, nfiles, sizev);
     vec W = smart::calcW(sizev, nfiles, weight_types, weight_files, weight_cols, data_weight, data_exp);
 
     return smart::calcC(vexp, vnum, W);

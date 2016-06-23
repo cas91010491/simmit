@@ -43,7 +43,7 @@ double cost_solver(const bn::ndarray &p_py) {
     
     smart::ident_essentials(n_param, n_consts, n_files, "data", "ident_essentials.inp");
     
-    if(n_param != p.n_elem) {
+    if(n_param != int(p.n_elem)) {
         cout << "Error : n_param ( = " << n_param << " informed in the file : ident_essentials.inp do not match with the size of p : " << p.n_elem << endl;
         return 0.;
     }
@@ -71,20 +71,20 @@ double cost_solver(const bn::ndarray &p_py) {
     ///Import of the experimental data
     string data_exp_folder="exp_data";
     string data_num_folder="num_data";
+    string materialfile="material.dat";
     string data_num_name="simul.txt";
     string simul_type = "SOLVE";
 
-    string path_data="data/";
-    string path_keys="keys/";
-    
+    string path_data="data";
+    string path_keys="keys";
+    string path_results="results";
     
     string data_num_name_ext = data_num_name.substr(data_num_name.length()-4,data_num_name.length());
     string data_num_name_root = data_num_name.substr(0,data_num_name.length()-4); //to remove the extension
     
     smart::individual ind(n_param, 1, 0.);
     ind.p = p;
-    
-    smart::run_simulation(simul_type, ind, n_files, params, consts, data_num, data_num_folder, data_num_name, path_data, path_keys);
+    smart::run_simulation(simul_type, ind, n_files, params, consts, data_num, data_num_folder, data_num_name, path_data, path_keys, materialfile);
     
     //Get the experimental data and build the exp vector, and get the size of vectors
     int sizev = 0;

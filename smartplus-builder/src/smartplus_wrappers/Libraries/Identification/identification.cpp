@@ -20,18 +20,25 @@ using namespace arma;
 using namespace arma2numpy;
 
 namespace smartpy {
-
-//This function computes the identifcation of materials parameters for one/multiple homogeneous mixed thermomechanical loading experiment
-void identification_solver(const bp::str &simul_type_py, const int &n_param, const int &n_consts, const int &nfiles, const int &ngen, const int &aleaspace, const int &apop_py, const int &spop_py, const int &ngboys, const int &maxpop, const bp::str &path_data_py, const bp::str &path_keys_py, const bp::str &path_results_py, const bp::str &outputfile_py) {
     
-    int apop = apop_py;
-    int spop = spop_py;
+//This function computes the identifcation of materials parameters for one/multiple homogeneous mixed thermomechanical loading experiment
+void identification_solver(const bp::str &simul_type_py, const int &n_param, const int &n_consts, const int &nfiles, const int &ngen, const int &aleaspace, const int &pop_py, const int &ngboys, const int &maxpop, const bp::str &path_data_py, const bp::str &path_keys_py, const bp::str &path_results_py, const bp::str &materialfile_py, const bp::str &outputfile_py) {
+    
+    int apop = 0;
+    int spop = 0;
+    
+    if(aleaspace == 2)
+        apop = pop_py;
+    else if(aleaspace < 2)
+        spop = pop_py;
+    
     std::string simul_type = bp::extract<std::string>(simul_type_py);
     std::string path_data = bp::extract<std::string>(path_data_py);
     std::string path_keys = bp::extract<std::string>(path_keys_py);
     std::string path_results = bp::extract<std::string>(path_results_py);
+    std::string materialfile = bp::extract<std::string>(materialfile_py);
     std::string outputfile = bp::extract<std::string>(outputfile_py);
-    smart::run_identification_solver(simul_type, n_param, n_consts, nfiles, ngen, aleaspace, apop, spop, ngboys, maxpop, path_data, path_keys, path_results, outputfile);
+    smart::run_identification_solver(simul_type, n_param, n_consts, nfiles, ngen, aleaspace, apop, spop, ngboys, maxpop, path_data, path_keys, path_results, materialfile, outputfile);
 }
 
 bp::list read_constants_py(const int &nconstants, const int &nfiles) {

@@ -7,6 +7,9 @@
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/contimech.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/criteria.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/recovery_props.hpp>
+#include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/Leff.hpp>
+
+#include <simmit/smartplus_wrappers/Libraries/Material/ODF.hpp>
 
 #include <simmit/smartplus_wrappers/Libraries/Homogenization/eshelby.hpp>
 
@@ -84,8 +87,9 @@ BOOST_PYTHON_MODULE(smartplus) {
     bp::def("L_ortho_props", L_ortho_props);
     bp::def("M_ortho_props", M_ortho_props);
     bp::def("M_aniso_props", M_aniso_props);
-
     
+    // Register the L_eff for composites
+    bp::def("L_eff", L_eff);
 
     // Register the from-python converters for eshelby
     bp::def("Eshelby_sphere", Eshelby_sphere);
@@ -98,4 +102,9 @@ BOOST_PYTHON_MODULE(smartplus) {
     // Register the from-python converters for read and solver
     bp::def("read_matprops", read_matprops);
     bp::def("solver", solver);
+    
+    // Register the from-python converters for ODF functions
+    bp::def("get_densities", get_densities);
+    bp::def("ODF_discretization", ODF_discretization);    
+    
 }

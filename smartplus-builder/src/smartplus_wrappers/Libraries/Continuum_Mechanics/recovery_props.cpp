@@ -82,7 +82,7 @@ bn::ndarray M_cubic_props(const bn::ndarray &nMt) {
 bn::ndarray L_ortho_props(const bn::ndarray &nLt) {
     
     mat Lt = array2mat(nLt);
-    vec props = smart::L_cubic_props(Lt);
+    vec props = smart::L_ortho_props(Lt);
     return vec2array(props);
 }
 
@@ -90,7 +90,7 @@ bn::ndarray L_ortho_props(const bn::ndarray &nLt) {
 bn::ndarray M_ortho_props(const bn::ndarray &nMt) {
     
     mat Mt = array2mat(nMt);
-    vec props = smart::M_cubic_props(Mt);
+    vec props = smart::M_ortho_props(Mt);
     return vec2array(props);
 }
     

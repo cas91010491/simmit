@@ -54,16 +54,13 @@ void ODF_discretization(const int &nphases_rve, const int &num_phase_disc, const
     string rve_disc_file = bp::extract<std::string>(rve_disc_file_py);
     
     vec props = array2vec(props_py);
-    
-    double rho = 0.;
-    double c_p = 0.;
-    
+        
     double psi_rve = 0.;
     double theta_rve = 0.;
     double phi_rve = 0.;
     
     smart::phase_characteristics rve_init;
-    rve_init.sptr_matprops->update(0, umat_name, 1, psi_rve, theta_rve, phi_rve, props.n_elem, props, rho, c_p);
+    rve_init.sptr_matprops->update(0, umat_name, 1, psi_rve, theta_rve, phi_rve, props.n_elem, props);
     
     string inputfile;
     string outputfile;

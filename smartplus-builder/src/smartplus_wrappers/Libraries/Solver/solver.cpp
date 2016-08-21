@@ -17,7 +17,7 @@ using namespace arma2numpy;
 namespace smartpy {
 
 //This function computes the response of materials for an homogeneous mixed thermomechanical loading path    
-void solver(const bp::str &umat_name_py, const bn::ndarray &props_py, const int &nstatev, const double &psi_rve, const double &theta_rve, const double &phi_rve, const double &rho, const double &c_p, const bp::str &path_data_py, const bp::str &path_results_py, const bp::str &pathfile_py, const bp::str &outputfile_py) {
+void solver(const bp::str &umat_name_py, const bn::ndarray &props_py, const int &nstatev, const double &psi_rve, const double &theta_rve, const double &phi_rve, const bp::str &path_data_py, const bp::str &path_results_py, const bp::str &pathfile_py, const bp::str &outputfile_py) {
     
     vec props = array2vec(props_py);
 
@@ -26,7 +26,7 @@ void solver(const bp::str &umat_name_py, const bn::ndarray &props_py, const int 
     std::string path_results = bp::extract<std::string>(path_results_py);
     std::string pathfile = bp::extract<std::string>(pathfile_py);
     std::string outputfile = bp::extract<std::string>(outputfile_py);
-    smart::solver(umat_name, props, nstatev, psi_rve, theta_rve, phi_rve, rho, c_p, path_data, path_results, pathfile, outputfile);
+    smart::solver(umat_name, props, nstatev, psi_rve, theta_rve, phi_rve, path_data, path_results, pathfile, outputfile);
 }
 
 } //namepsace smartpy

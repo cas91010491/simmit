@@ -19,7 +19,7 @@ using namespace arma2numpy;
 namespace smartpy {
 
 //Check the material symetries and the type of elastic response for a given stiffness tensor
-bn::ndarray L_eff(const bp::str &umat_name_py, const bn::ndarray &props_py, const int &nstatev, const double &psi_rve, const double &theta_rve, const double &phi_rve, const double &rho, const double &c_p, const bp::str &path_data_py) {
+bn::ndarray L_eff(const bp::str &umat_name_py, const bn::ndarray &props_py, const int &nstatev, const double &psi_rve, const double &theta_rve, const double &phi_rve, const bp::str &path_data_py) {
 
     vec props = array2vec(props_py);
     
@@ -28,9 +28,9 @@ bn::ndarray L_eff(const bp::str &umat_name_py, const bn::ndarray &props_py, cons
     double T_init = 273.15;
     
     smart::phase_characteristics rve;
-    rve.sptr_matprops->update(0, umat_name, 1, psi_rve, theta_rve, phi_rve, props.n_elem, props, rho, c_p);
+    rve.sptr_matprops->update(0, umat_name, 1, psi_rve, theta_rve, phi_rve, props.n_elem, props);
     rve.construct(0,1);
-    rve.sptr_sv_global->update(zeros(6), zeros(6), zeros(6), zeros(6), T_init, 0., 0., 0., nstatev, zeros(nstatev), zeros(nstatev));
+    rve.sptr_sv_global->update(zeros(6), zeros(6), zeros(6), zeros(6), T_init, 0., nstatev, zeros(nstatev), zeros(nstatev));
     
     auto sv_M = std::dynamic_pointer_cast<smart::state_variables_M>(rve.sptr_sv_global);
     

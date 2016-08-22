@@ -1,4 +1,4 @@
-FROM smartplus
+FROM chemiskyy/smartplus
 
 #tweak boost
 RUN cp /usr/lib/libboost_numpy.so /usr/lib/x86_64-linux-gnu/libboost_numpy.so && \

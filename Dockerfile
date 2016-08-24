@@ -4,6 +4,8 @@ FROM chemiskyy/smartplus
 RUN cp /usr/lib/libboost_numpy.so /usr/lib/x86_64-linux-gnu/libboost_numpy.so && \
     rm /usr/lib/libboost_numpy.so
 
+RUN mkdir /notebooks && chmod -R 777 /notebooks
+
 #install simmit
 RUN export SIMMIT_URL=https://github.com/chemiskyy/simmit.git && \
     export SIMMIT_NAME=simmit && \
@@ -22,6 +24,7 @@ RUN export SIMMIT_URL=https://github.com/chemiskyy/simmit.git && \
     make install && \
     cp ${SIMMIT_SMART_BUILD_DIR}/lib/smartplus.so ${SIMMIT_SOURCE_DIR}/python-setup/simmit/smartplus.so && \
     cp ${SIMMIT_SMART_BUILD_DIR}/lib/identify.so ${SIMMIT_SOURCE_DIR}/python-setup/simmit/identify.so && \
+    cp -R ${SIMMIT_SOURCE_DIR}/Examples /notebooks
     cd ${SIMMIT_SOURCE_DIR}/python-setup && \
     python ${SIMMIT_SOURCE_DIR}/python-setup/setup.py install && \
     rm -rf ${SIMMIT_SOURCE_DIR} && \
@@ -38,8 +41,6 @@ RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER && \
     mkdir /home/$NB_USER/.local && \
     mkdir /home/$NB_USER/notebooks && \
     chown -R $NB_USER:users /home/$NB_USER
-
-RUN mkdir /notebooks && chmod -R 777 /notebooks
 
 EXPOSE 8888
 WORKDIR /notebooks

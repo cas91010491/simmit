@@ -24,7 +24,7 @@ RUN export SIMMIT_URL=https://github.com/chemiskyy/simmit.git && \
     make install && \
     cp ${SIMMIT_SMART_BUILD_DIR}/lib/smartplus.so ${SIMMIT_SOURCE_DIR}/python-setup/simmit/smartplus.so && \
     cp ${SIMMIT_SMART_BUILD_DIR}/lib/identify.so ${SIMMIT_SOURCE_DIR}/python-setup/simmit/identify.so && \
-    cp -R ${SIMMIT_SOURCE_DIR}/Examples /notebooks
+    cp -R ${SIMMIT_SOURCE_DIR}/Examples /notebooks && \
     cd ${SIMMIT_SOURCE_DIR}/python-setup && \
     python ${SIMMIT_SOURCE_DIR}/python-setup/setup.py install && \
     rm -rf ${SIMMIT_SOURCE_DIR} && \

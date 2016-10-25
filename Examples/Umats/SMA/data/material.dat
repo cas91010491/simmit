@@ -1,0 +1,57 @@
+Material
+Name	SMAUT
+Number_of_material_parameters	31
+Number_of_internal_variables	17
+
+#Orientation
+psi	0
+theta	0
+phi	0
+
+#Material_properties
+rho 		5.5
+c_pA		0.5
+c_pM		0.5
+flagT       	0
+E_A		67538
+E_M		67538
+nu_A		0.349
+nu_M		0.349
+alphaA		1.E-6
+alphaM		1.E-6
+Hmin 		0.
+Hmax 		0.0418
+k1		0.021
+sigmacrit	0.0
+C_A		10
+C_M		10
+Ms0		260
+Mf0		245
+As0		270
+Af0		285
+n1		0.6
+n2		0.6
+n3		0.6
+n4		0.6
+sigmacaliber 300
+b_prager    0.7
+n_prager    2.
+c_lambda	1.E-6
+p0_lambda	1.E-3
+n_lambda	1.0
+alpha_lambda 	1.E8
+
+
+Material
+Name	MIPLN
+Number_of_material_parameters	2
+Number_of_internal_variables	0
+
+#Orientation
+psi	0
+theta	0
+phi	0
+
+#Mechancial
+P1 2
+P2 0

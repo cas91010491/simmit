@@ -1,123 +1,83 @@
 #Initial_temperature
-290
+293.15
 #Number_of_blocks
 1
 
 #Block
 1
 #Loading_type
-1
+2
 #Repeat
 1
 #Steps
-2
+5
 
 #Mode
 1
 #Dn_init 1.
 #Dn_mini 1.
-#Dn_inc 0.01
+#Dn_inc 0.001
 #time
-0.01
+300
 #Consigne
-E 0.05
+S 1000
 S 0 S 0
 S 0 S 0 S 0
 #Consigne_T
-T 290
-
+Q 0
 
 #Mode
 1
 #Dn_init 1.
 #Dn_mini 1.
-#Dn_inc 0.01
+#Dn_inc 0.001
 #time
-0.01
+300
 #Consigne
-E 0
+S -1100
 S 0 S 0
 S 0 S 0 S 0
 #Consigne_T
-T 290
-
-
-
-#Mode
-3
-#File
-OUT.txt
-#Dn_init 1.
-#Dn_mini 1.
-#Consigne
-S
-0  0
-0  0  0
-#T_is_set
-0
-
-
+Q 0
 
 #Mode
 1
 #Dn_init 1.
 #Dn_mini 1.
-#Dn_inc 0.01
+#Dn_inc 0.001
 #time
-0.01
+300
 #Consigne
-E 0.013
+S 1200
 S 0 S 0
 S 0 S 0 S 0
 #Consigne_T
-T 290
+Q 0
 
 #Mode
 1
 #Dn_init 1.
 #Dn_mini 1.
-#Dn_inc 0.01
+#Dn_inc 0.001
 #time
-0.01
+300
 #Consigne
-S 0
+S -1300
 S 0 S 0
 S 0 S 0 S 0
 #Consigne_T
-T 290
-
-
-
-
-
-#Mode
-3
-#File
-path_inc.txt
-#Dn_init 1.
-#Dn_mini 1.
-#Consigne
-S
-0  0
-0  0  0
-#T_is_set
-Q
-
-
+Q 0
 
 #Mode
 1
 #Dn_init 1.
 #Dn_mini 1.
-#Dn_inc 0.1
+#Dn_inc 0.001
 #time
-1
+300
 #Consigne
-S 600
+S 1500
 S 0 S 0
 S 0 S 0 S 0
 #Consigne_T
-T 290
-
-
-
+Q 0

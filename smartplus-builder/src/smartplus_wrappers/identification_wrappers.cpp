@@ -47,7 +47,7 @@ BOOST_PYTHON_MODULE(identify) {
     ;
     
     // Register the identification solver
-    bp::def("identification_solver", identification_solver);
+    bp::def("identification", identification);
     
     // Register the calc cost
     bp::def("calc_cost", calc_cost);

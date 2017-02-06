@@ -1,0 +1,14 @@
+#Name_of_the_exp_files
+Nellipsoids1.dat
+
+#EXP_Nb_columns_in_files
+19
+
+#EXP_Nb_columns_to_identify
+1
+
+#EXP_colums_to_identify
+4
+
+#skip_lines
+1

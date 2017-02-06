@@ -9,6 +9,8 @@
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/recovery_props.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/Leff.hpp>
 
+#include <simmit/smartplus_wrappers/Libraries/Maths/rotation.hpp>
+
 #include <simmit/smartplus_wrappers/Libraries/Material/ODF.hpp>
 
 #include <simmit/smartplus_wrappers/Libraries/Homogenization/eshelby.hpp>
@@ -105,6 +107,18 @@ BOOST_PYTHON_MODULE(smartplus) {
     
     // Register the from-python converters for ODF functions
     bp::def("get_densities", get_densities);
-    bp::def("ODF_discretization", ODF_discretization);    
+    bp::def("ODF_discretization", ODF_discretization);
     
+    //Register the from-python converters for rotation
+    bp::def("fillR_axis", fillR_axis);
+    bp::def("fillQS", fillQS);
+    bp::def("fillQE", fillQE);
+//    bp::def("rotate_vec", rotate_vec);
+//    bp::def("rotate_mat", rotate_mat);
+    bp::def("rotate_strain", rotate_strain);
+    bp::def("rotate_stress", rotate_stress);
+    bp::def("rotateL", rotateL);
+    bp::def("rotateM", rotateM);
+    bp::def("rotateA", rotateA);
+    bp::def("rotateB", rotateB);
 }

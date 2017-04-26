@@ -1,26 +1,38 @@
 #pragma once
 #include <string>
 #include <boost/python.hpp>
-#include <boost/numpy.hpp>
+#include <boost/python/numpy.hpp>
 
 namespace smartpy{
     
 //This function returns the Prager equivalent stress.
-double Prager_stress(const boost::numpy::ndarray &, const double &, const double &);
+double Prager_stress(const boost::python::numpy::ndarray &, const double &, const double &);
 
 //This function returns the derivative of the Prager equivalent stress.
-boost::numpy::ndarray dPrager_stress(const boost::numpy::ndarray &, const double &, const double &);
+boost::python::numpy::ndarray dPrager_stress(const boost::python::numpy::ndarray &, const double &, const double &);
 
 //This function returns the Prager equivalent stress.
-double Tresca_stress(const boost::numpy::ndarray &);
+double Tresca_stress(const boost::python::numpy::ndarray &);
 
 //This function returns the derivative of the Prager equivalent stress.
-boost::numpy::ndarray dTresca_stress(const boost::numpy::ndarray &);
+boost::python::numpy::ndarray dTresca_stress(const boost::python::numpy::ndarray &);
+
+//This function returns the Hill equivalent stress.
+double Hill_stress(const boost::python::numpy::ndarray &, const boost::python::numpy::ndarray &);
+
+//This function returns the derivative of the Hill equivalent stress.
+boost::python::numpy::ndarray dHill_stress(const boost::python::numpy::ndarray &, const boost::python::numpy::ndarray &);
+    
+//This function returns the Ani equivalent stress.
+double Ani_stress(const boost::python::numpy::ndarray &, const boost::python::numpy::ndarray &);
+
+//This function returns the derivative of the Ani equivalent stress.
+boost::python::numpy::ndarray dAni_stress(const boost::python::numpy::ndarray &, const boost::python::numpy::ndarray &);
     
 //This function computes the selected equivalent stress function
-double Eq_stress(const boost::numpy::ndarray &, const std::string &, const boost::numpy::ndarray &);
+double Eq_stress(const boost::python::numpy::ndarray &, const std::string &, const boost::python::numpy::ndarray &);
 
 //This function computes the deriavtive of the selected equivalent stress function
-boost::numpy::ndarray dEq_stress(const boost::numpy::ndarray &, const std::string &, const boost::numpy::ndarray &);
+boost::python::numpy::ndarray dEq_stress(const boost::python::numpy::ndarray &, const std::string &, const boost::python::numpy::ndarray &);
     
 } //namespace smartpy

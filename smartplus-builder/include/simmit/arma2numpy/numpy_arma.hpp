@@ -18,24 +18,24 @@
 #pragma once
 #include <armadillo>
 #include <boost/python.hpp>
-#include <boost/numpy.hpp>
+#include <boost/python/numpy.hpp>
 
 namespace arma2numpy {
 
-arma::vec array2vec(const boost::numpy::ndarray&);
+arma::vec array2vec(const boost::python::numpy::ndarray&);
 
-arma::mat array2mat(const boost::numpy::ndarray&);
+arma::mat array2mat(const boost::python::numpy::ndarray&);
 
-boost::numpy::ndarray vec2array(const arma::vec&);
+boost::python::numpy::ndarray vec2array(const arma::vec&);
 
-boost::numpy::ndarray mat2array(const arma::mat&);
+boost::python::numpy::ndarray mat2array(const arma::mat&);
 
-arma::Col<int> array2Col_int(const boost::numpy::ndarray&);
+arma::Col<int> array2Col_int(const boost::python::numpy::ndarray&);
 
-boost::numpy::ndarray Col_int2array(const arma::Col<int>&);
+boost::python::numpy::ndarray Col_int2array(const arma::Col<int>&);
 
-arma::Mat<int> array2Mat_int(const boost::numpy::ndarray&);
+arma::Mat<int> array2Mat_int(const boost::python::numpy::ndarray&);
 
-boost::numpy::ndarray Mat_int2array(const arma::Mat<int>&);
+boost::python::numpy::ndarray Mat_int2array(const arma::Mat<int>&);
     
 } //end of namespace arma2numpy

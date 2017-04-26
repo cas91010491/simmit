@@ -1,6 +1,5 @@
 #pragma once
 #include <boost/python.hpp>
-#include <boost/numpy.hpp>
 
 namespace smartpy{
 

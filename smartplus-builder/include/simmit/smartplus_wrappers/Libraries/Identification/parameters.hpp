@@ -10,7 +10,6 @@
 #include <armadillo>
 #include <smartplus/Libraries/Identification/parameters.hpp>
 #include <boost/python.hpp>
-#include <boost/numpy.hpp>
 
 namespace smartpy{
 

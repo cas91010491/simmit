@@ -19,18 +19,19 @@
 ///@brief Test for the arma2numpy library
 ///@version 1.0
 
+#pragma once
 #include <boost/python.hpp>
-#include <boost/numpy.hpp>
+#include <boost/python/numpy.hpp>
 
 namespace arma2numpy {
 
-boost::numpy::ndarray test_vec_int(boost::numpy::ndarray const &y);
+boost::python::numpy::ndarray test_vec_int(boost::python::numpy::ndarray const &y);
 
-boost::numpy::ndarray test_mat_int(boost::numpy::ndarray const &y);
+boost::python::numpy::ndarray test_mat_int(boost::python::numpy::ndarray const &y);
     
-boost::numpy::ndarray test_vec_double(boost::numpy::ndarray const &y);
+boost::python::numpy::ndarray test_vec_double(boost::python::numpy::ndarray const &y);
 
-boost::numpy::ndarray test_mat_double(boost::numpy::ndarray const &y);
+boost::python::numpy::ndarray test_mat_double(boost::python::numpy::ndarray const &y);
 
 boost::python::list test_vector_list_double(boost::python::list const &y);
     

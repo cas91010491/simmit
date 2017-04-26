@@ -21,13 +21,13 @@
 
 #include <armadillo>
 #include <boost/python.hpp>
-#include <boost/numpy.hpp>
+#include <boost/python/numpy.hpp>
 #include <simmit/arma2numpy/numpy_arma.hpp>
 #include <simmit/arma2numpy/list_vector.hpp>
 #include <smartplus/Libraries/Identification/constants.hpp>
 
 namespace bp = boost::python;
-namespace bn = boost::numpy;
+namespace bn = boost::python::numpy;
 using namespace std;
 using namespace arma;
 

@@ -32,7 +32,7 @@ using namespace arma2numpy;
 
 namespace smartpy{
     
-bn::ndarray get_densities(const bn::ndarray &x_py, const bp::str &path_data_py, const bp::str &peak_file_py, const bool &radian) {
+bn::ndarray get_densities_ODF(const bn::ndarray &x_py, const bp::str &path_data_py, const bp::str &peak_file_py, const bool &radian) {
     
     string path_data = bp::extract<std::string>(path_data_py);
     string peak_file = bp::extract<std::string>(peak_file_py);
@@ -40,7 +40,7 @@ bn::ndarray get_densities(const bn::ndarray &x_py, const bp::str &path_data_py, 
     //transform x in a vec
     vec x = array2vec(x_py);
     //Get the densities
-    vec y = smart::get_densities(x, path_data, peak_file, radian);
+    vec y = smart::get_densities_ODF(x, path_data, peak_file, radian);
     //Get the densities
     return vec2array(y);
 }

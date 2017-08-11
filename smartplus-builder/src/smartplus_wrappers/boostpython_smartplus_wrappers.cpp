@@ -109,7 +109,7 @@ BOOST_PYTHON_MODULE(smartplus) {
     bp::def("solver", solver);
     
     // Register the from-python converters for ODF functions
-    bp::def("get_densities", get_densities);
+    bp::def("get_densities_ODF", get_densities_ODF);
     bp::def("ODF_discretization", ODF_discretization);
     
     //Register the from-python converters for rotation

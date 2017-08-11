@@ -20,10 +20,10 @@
 #include <memory>
 #include <armadillo>
 #include <boost/python.hpp>
-#include <boost/numpy.hpp>
+#include <boost/python/numpy.hpp>
 
 namespace bp = boost::python;
-namespace bn = boost::numpy;
+namespace bn = boost::python::numpy;
 using namespace arma;
 
 namespace arma2numpy {

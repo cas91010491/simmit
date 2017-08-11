@@ -133,10 +133,4 @@ BOOST_PYTHON_MODULE(smartplus) {
     bp::def("lagrange_pow_1", lagrange_pow_1);
     bp::def("dlagrange_pow_1", dlagrange_pow_1);
     bp::def("d2lagrange_pow_1", d2lagrange_pow_1);
-    
-    //Register
-    bp::def("write_material", write_material);
-    bp::def("write_material_fromfile", write_material_fromfile);
-    bp::def("write_materials_fromfile", write_materials_fromfile);
-    
 }

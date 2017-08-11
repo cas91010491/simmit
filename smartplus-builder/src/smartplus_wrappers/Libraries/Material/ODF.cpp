@@ -12,7 +12,7 @@
 #include <armadillo>
 
 #include <boost/python.hpp>
-#include <boost/numpy.hpp>
+#include <boost/python/numpy.hpp>
 
 #include <smartplus/Libraries/Phase/phase_characteristics.hpp>
 #include <smartplus/Libraries/Phase/read.hpp>
@@ -25,7 +25,7 @@
 #include <simmit/smartplus_wrappers/Libraries/Material/ODF.hpp>
 
 namespace bp = boost::python;
-namespace bn = boost::numpy;
+namespace bn = boost::python::numpy;
 using namespace std;
 using namespace arma;
 using namespace arma2numpy;

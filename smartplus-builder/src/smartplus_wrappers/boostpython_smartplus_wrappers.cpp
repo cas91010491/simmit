@@ -1,7 +1,7 @@
 
 #include <armadillo>
 #include <boost/python.hpp>
-#include <boost/numpy.hpp>
+#include <boost/python/numpy.hpp>
 #include <simmit/arma2numpy/numpy_arma.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/constitutive.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/contimech.hpp>
@@ -10,6 +10,7 @@
 #include <simmit/smartplus_wrappers/Libraries/Continuum_Mechanics/Leff.hpp>
 
 #include <simmit/smartplus_wrappers/Libraries/Maths/rotation.hpp>
+#include <simmit/smartplus_wrappers/Libraries/Maths/lagrange.hpp>
 
 #include <simmit/smartplus_wrappers/Libraries/Material/ODF.hpp>
 
@@ -18,8 +19,10 @@
 #include <simmit/smartplus_wrappers/Libraries/Solver/read.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Solver/solver.hpp>
 
+#include <simmit/smartplus_wrappers/Libraries/Abaqus/write.hpp>
+
 namespace bp = boost::python;
-namespace bn = boost::numpy;
+namespace bn = boost::python::numpy;
 using namespace std;
 using namespace arma;
 using namespace smartpy;
@@ -121,4 +124,19 @@ BOOST_PYTHON_MODULE(smartplus) {
     bp::def("rotateM", rotateM);
     bp::def("rotateA", rotateA);
     bp::def("rotateB", rotateB);
+    
+    //Register the from-python converters for lagrange
+    bp::def("lagrange_exp", lagrange_exp);
+    bp::def("dlagrange_exp", dlagrange_exp);
+    bp::def("lagrange_pow_0", lagrange_pow_0);
+    bp::def("dlagrange_pow_0", dlagrange_pow_0);
+    bp::def("lagrange_pow_1", lagrange_pow_1);
+    bp::def("dlagrange_pow_1", dlagrange_pow_1);
+    bp::def("d2lagrange_pow_1", d2lagrange_pow_1);
+    
+    //Register
+    bp::def("write_material", write_material);
+    bp::def("write_material_fromfile", write_material_fromfile);
+    bp::def("write_materials_fromfile", write_materials_fromfile);
+    
 }

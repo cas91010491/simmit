@@ -1,14 +1,14 @@
 
 #include <armadillo>
 #include <boost/python.hpp>
-#include <boost/numpy.hpp>
+#include <boost/python/numpy.hpp>
 #include <simmit/arma2numpy/numpy_arma.hpp>
 
 #include <smartplus/Libraries/Solver/read.hpp>
 #include <smartplus/Libraries/Solver/solver.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Solver/solver.hpp>
 
-namespace bn = boost::numpy;
+namespace bn = boost::python::numpy;
 namespace bp = boost::python;
 using namespace std;
 using namespace arma;

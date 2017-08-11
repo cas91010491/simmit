@@ -9,9 +9,8 @@
 #include <assert.h>
 #include <math.h>
 #include <armadillo>
-
 #include <boost/python.hpp>
-#include <boost/numpy.hpp>
+#include <boost/python/numpy.hpp>
 
 #include <smartplus/Libraries/Identification/read.hpp>
 #include <smartplus/Libraries/Identification/individual.hpp>
@@ -25,7 +24,7 @@
 #include <simmit/smartplus_wrappers/Libraries/Identification/optimize.hpp>
 
 namespace bp = boost::python;
-namespace bn = boost::numpy;
+namespace bn = boost::python::numpy;
 using namespace std;
 using namespace arma;
 using namespace arma2numpy;

@@ -14,114 +14,137 @@ using namespace arma2numpy;
 
 namespace smartpy {
 
-//This function returns the 3*3 rotation matrix
-bn::ndarray fillR_axis(const double &alpha, const int & axis) {
-    return mat2array(smart::fillR(alpha,axis));
+bn::ndarray rotate_vec_R(const bn::ndarray &ndv, const bn::ndarray &ndR) {
+    vec v = array2vec(ndv);
+    mat R = array2mat(ndR);
+    return vec2array(smart::rotate_vec(v,R));
+}
+
+bn::ndarray rotate_vec_angle(const bn::ndarray &ndv, const double &alpha, const int &axis) {
+    vec v = array2vec(ndv);
+    return vec2array(smart::rotate_vec(v,alpha,axis));
+}
+
+bn::ndarray rotate_mat_R(const bn::ndarray &ndm, const bn::ndarray &ndR) {
+    mat m = array2mat(ndm);
+    mat R = array2mat(ndR);
+    return mat2array(smart::rotate_mat(m,R));
+}
+
+bn::ndarray rotate_mat_angle(const bn::ndarray &ndm, const double &alpha, const int &axis) {
+    
+    mat m = array2mat(ndm);
+    return mat2array(smart::rotate_mat(m,alpha,axis));
+}
+
+bn::ndarray fillR_angle(const double &alpha, const int &axis, const bool &active) {
+    
+    return mat2array(smart::fillR(alpha,axis,active));
 }
     
 //This function returns the 3*3 rotation matrix
-//bn::ndarray fillR_euler(const double &psi, const double &theta, const double &phi) {
-//    return mat2array(smart::fillR(alpha,axis));
-//}
+bn::ndarray fillR_euler(const double &psi, const double &theta, const double &phi, const bool &active, const string &conv) {
+    return mat2array(smart::fillR(psi,theta,phi,active,conv));
+}
 
 //This function returns the 6*6 rotation matrix of a vector of type 'stress'
-/*bn::ndarray fillQS(const double &alpha, const int & axis) {
-    return mat2array(smart::fillQS(alpha,axis));
-}*/
+bn::ndarray fillQS_angle(const double &alpha, const int &axis, const bool &active) {
+    return mat2array(smart::fillQS(alpha,axis,active));
+}
 
 //This function returns the 6*6 rotation matrix of a vector of type 'stress'
-bn::ndarray fillQS(const bn::ndarray &ndR) {
+bn::ndarray fillQS_R(const bn::ndarray &ndR, const bool &active) {
     mat R = array2mat(ndR);
-    return mat2array(smart::fillQS(R));
+    return mat2array(smart::fillQS(R,active));
 }
     
 //This function returns the 6*6 rotation matrix of a vector of type 'strain'
-/*bn::ndarray fillQE(const double alpha, const int & axis) {
-    return mat2array(smart::fillQE(alpha,axis));
-}*/
+bn::ndarray fillQE_angle(const double &alpha, const int &axis, const bool &active) {
+    return mat2array(smart::fillQE(alpha,axis,active));
+}
 
 //This function returns the 6*6 rotation matrix of a vector of type 'strain'
-bn::ndarray fillQE(const bn::ndarray &ndR) {
+bn::ndarray fillQE_R(const bn::ndarray &ndR, const bool &active) {
     mat R = array2mat(ndR);
-    return mat2array(smart::fillQE(R));
+    return mat2array(smart::fillQE(R,active));
 }
 
 //This function rotates a 6*6 stiffness matrix (L)
-/*bn::ndarray rotateL(const bn::ndarray &ndL, const double &alpha, const int & axis) {
+bn::ndarray rotateL_angle(const bn::ndarray &ndL, const double &alpha, const int & axis, const bool &active) {
     mat L = array2mat(ndL);
-    return mat2array(smart::rotateL(L,alpha,axis);
-}*/
+    return mat2array(smart::rotateL(L,alpha,axis,active));
+}
 
 //This function rotates a 6*6 stiffness matrix (L)
-bn::ndarray rotateL(const bn::ndarray &ndL, const bn::ndarray &ndR) {
+bn::ndarray rotateL_R(const bn::ndarray &ndL, const bn::ndarray &ndR, const bool &active) {
     mat L = array2mat(ndL);
     mat R = array2mat(ndR);
-    return mat2array(smart::rotateL(L,R));
+    return mat2array(smart::rotateL(L,R,active));
 }
 
 //This function rotates a 6*6 compliance matrix (M)
-/*bn::ndarray rotateM(const bn::ndarray &ndM, const double &alpha, const int & axis) {
+bn::ndarray rotateM_angle(const bn::ndarray &ndM, const double &alpha, const int &axis, const bool &active) {
     mat M = array2mat(ndM);
-    return mat2array(smart::rotateM(M,alpha,axis);
-}*/
+    return mat2array(smart::rotateM(M,alpha,axis,active));
+}
 
 //This function rotates a 6*6 compliance matrix (M)
-bn::ndarray rotateM(const bn::ndarray &ndM, const bn::ndarray &ndR) {
+bn::ndarray rotateM_R(const bn::ndarray &ndM, const bn::ndarray &ndR, const bool &active) {
     mat M = array2mat(ndM);
     mat R = array2mat(ndR);
-    return mat2array(smart::rotateM(M,R));
+    return mat2array(smart::rotateM(M,R,active));
 }
 
 //This function rotates a 6*6 strain concentration (A)
-/*bn::ndarray rotateA(const bn::ndarray &ndA, const double &alpha, const int & axis) {
+bn::ndarray rotateA_angle(const bn::ndarray &ndA, const double &alpha, const int &axis, const bool &active) {
     mat A = array2mat(ndA);
-    return mat2array(smart::rotateA(A,alpha,axis);
-}*/
+    return mat2array(smart::rotateA(A,alpha,axis,active));
+}
 
 //This function rotates a 6*6 strain concentration (A)
-bn::ndarray rotateA(const bn::ndarray &ndA, const bn::ndarray &ndR) {
+bn::ndarray rotateA_R(const bn::ndarray &ndA, const bn::ndarray &ndR, const bool &active) {
     mat A = array2mat(ndA);
     mat R = array2mat(ndR);
-    return mat2array(smart::rotateA(A,R));
+    return mat2array(smart::rotateA(A,R,active));
 }
 
 //This function rotates a 6*6 stress concentration (B)
-/*bn::ndarray rotateB(const bn::ndarray &ndB, const double &alpha, const int & axis) {
+bn::ndarray rotateB_angle(const bn::ndarray &ndB, const double &alpha, const int &axis, const bool &active) {
     mat B = array2mat(ndB);
-    return mat2array(smart::rotateB(B,alpha,axis);
-}*/
+    return mat2array(smart::rotateB(B,alpha,axis,active));
+}
 
 //This function rotates a 6*6 stress concentration (B)
-bn::ndarray rotateB(const bn::ndarray &ndB, const bn::ndarray &ndR) {
+bn::ndarray rotateB_R(const bn::ndarray &ndB, const bn::ndarray &ndR, const bool &active) {
     mat B = array2mat(ndB);
     mat R = array2mat(ndR);
-    return mat2array(smart::rotateB(B,R));
+    return mat2array(smart::rotateB(B,R,active));
 }
 
 //This function rotates stress vectors
-/*bn::ndarray rotate_stress(const bn::ndarray &nd, const double alpha, const int & axis) {
+bn::ndarray rotate_stress_angle(const bn::ndarray &nd, const double &alpha, const int &axis, const bool &active) {
     vec v = array2vec(nd);
-    return vec2array(smart::rotate_stress(v,alpha,axis));
-}*/
+    return vec2array(smart::rotate_stress(v,alpha,axis,active));
+}
                  
 //This function rotates stress vectors
-bn::ndarray rotate_stress(const bn::ndarray &nd, const bn::ndarray &ndR) {
+bn::ndarray rotate_stress_R(const bn::ndarray &nd, const bn::ndarray &ndR, const bool &active) {
     vec v = array2vec(nd);
     mat R = array2mat(ndR);
-    return vec2array(smart::rotate_stress(v,R));
+    return vec2array(smart::rotate_stress(v,R,active));
 }
 
 //This function rotates strain vectors
-/*bn::ndarray rotate_strain(const bn::ndarray &nd, const double alpha, const int & axis) {
+bn::ndarray rotate_strain_angle(const bn::ndarray &nd, const double &alpha, const int &axis, const bool &active) {
     vec v = array2vec(nd);
-    return vec2array(smart::rotate_strain(v,alpha,axis));
-}*/
+    return vec2array(smart::rotate_strain(v,alpha,axis,active));
+}
 
 //This function rotates stress vectors
-bn::ndarray rotate_strain(const bn::ndarray &nd, const bn::ndarray &ndR) {
+bn::ndarray rotate_strain_R(const bn::ndarray &nd, const bn::ndarray &ndR, const bool &active) {
     vec v = array2vec(nd);
     mat R = array2mat(ndR);
-    return vec2array(smart::rotate_strain(v,R));
+    return vec2array(smart::rotate_strain(v,R,active));
 }
 
 //This function rotates strain vectors from a local to global set of coordinates (using Euler angles)

@@ -19,7 +19,7 @@
 #include <simmit/smartplus_wrappers/Libraries/Solver/read.hpp>
 #include <simmit/smartplus_wrappers/Libraries/Solver/solver.hpp>
 
-#include <simmit/smartplus_wrappers/Libraries/Abaqus/write.hpp>
+//#include <simmit/smartplus_wrappers/Libraries/Abaqus/write.hpp>
 
 namespace bp = boost::python;
 namespace bn = boost::python::numpy;
@@ -113,17 +113,41 @@ BOOST_PYTHON_MODULE(smartplus) {
     bp::def("ODF_discretization", ODF_discretization);
     
     //Register the from-python converters for rotation
-    bp::def("fillR_axis", fillR_axis);
-    bp::def("fillQS", fillQS);
-    bp::def("fillQE", fillQE);
-//    bp::def("rotate_vec", rotate_vec);
-//    bp::def("rotate_mat", rotate_mat);
-    bp::def("rotate_strain", rotate_strain);
-    bp::def("rotate_stress", rotate_stress);
-    bp::def("rotateL", rotateL);
-    bp::def("rotateM", rotateM);
-    bp::def("rotateA", rotateA);
-    bp::def("rotateB", rotateB);
+    bp::def("rotate_vec_R", rotate_vec_R);
+    bp::def("rotate_vec_angle", rotate_vec_angle);
+    bp::def("rotate_mat_R", rotate_mat_R);
+    bp::def("rotate_mat_angle", rotate_mat_angle);
+    bp::def("fillR_angle", fillR_angle);
+    bp::def("fillR_euler", fillR_euler);
+    bp::def("fillQS_angle", fillQS_angle);
+    bp::def("fillQS_R", fillQS_R);
+    bp::def("fillQE_angle", fillQE_angle);
+    bp::def("fillQE_R", fillQE_R);
+
+    bp::def("rotateL_angle", rotateL_angle);
+    bp::def("rotateL_R", rotateL_R);
+    bp::def("rotate_l2g_L", rotate_l2g_L);
+    bp::def("rotate_g2l_L", rotate_g2l_L);
+    bp::def("rotateM_angle", rotateM_angle);
+    bp::def("rotateM_angle", rotateM_angle);
+    bp::def("rotate_l2g_M", rotate_l2g_M);
+    bp::def("rotate_g2l_M", rotate_g2l_M);
+    bp::def("rotateA_angle", rotateA_angle);
+    bp::def("rotateA_R", rotateA_R);
+    bp::def("rotate_l2g_A", rotate_l2g_A);
+    bp::def("rotate_g2l_A", rotate_g2l_A);
+    bp::def("rotateB_angle", rotateB_angle);
+    bp::def("rotateB_R", rotateB_R);
+    bp::def("rotate_l2g_B", rotate_l2g_B);
+    bp::def("rotate_g2l_B", rotate_g2l_B);
+    bp::def("rotate_strain_angle", rotate_strain_angle);
+    bp::def("rotate_strain_R", rotate_strain_R);
+    bp::def("rotate_l2g_strain", rotate_l2g_strain);
+    bp::def("rotate_g2l_strain", rotate_g2l_strain);
+    bp::def("rotate_stress_angle", rotate_stress_angle);
+    bp::def("rotate_stress_R", rotate_stress_R);
+    bp::def("rotate_l2g_stress", rotate_l2g_stress);
+    bp::def("rotate_g2l_stress", rotate_g2l_stress);
     
     //Register the from-python converters for lagrange
     bp::def("lagrange_exp", lagrange_exp);
